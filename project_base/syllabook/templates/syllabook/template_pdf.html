@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 16px;
+      }
+
+      @page {
+        size: letter portrait;
+        margin-top: 1cm;
+        margin-left: 1.5cm;
+        margin-right: 1.5cm;
+        margin-bottom: 2cm;
+
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+      }
+
+
+
+      p {
+        font-size: 18px;
+        font-weight: normal;
+
+      }
+
+      h1 {
+        font-size: 18px;
+        margin-top: 30px;
+        margin-bottom: -5px;
+      }
+
+      h2 {
+        font-size: 16px;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      h2.name {
+        font-size: 16px;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      h3 {
+        font-size: 11px;
+        text-align: right;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        font-style: italic;
+      }
+
+      
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        
+      }
+
+      th, td {
+        text-align: justify;
+        padding-left:5px;
+        padding-right: 5px;
+        padding-top: 3px;
+        padding-bottom: -2px;
+        margin: auto;
+        
+      }
+      
+      th {
+        width:30%;
+      }
+
+      td {
+        width: 70%;
+      }
+
+      table.d {
+        table-layout: fixed;
+        width: 100%;
+      }
+
+      tr.p {
+        height: 2cm;
+
+      }
+
+      td.f{
+        text-align: center;
+        font-size: 10px;
+      }
+
+      h1.prof{
+        text-align: center;
+        font-size: 32px;
+        font-weight: normal;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      {% for post in posts %}
+      <div>
+        <h3> TIP-VPAA-001Revision Status/Date: 3/{{ post.date_posted|date:"Y M d" }}</h3>
+      </div>
+      {% endfor %}
+      <table>
+        <thead>
+          <h1> TECHNOLOGICAL INSTITUTE OF THE PHILIPPINES <br> COURSE SYLLABUS</h1>
+        </thead>
+        <tbody>
+          
+          {% for post in posts %}
+          <tr>
+            <th><h2>COURSE CODE<br>COURSE NAME</h2></th>
+            <td colspan="2">{{ post.course_code|safe }}<br>{{ post.course_name|safe }}</td>
+          </tr>
+          {% endfor %}
+
+          {% for post in posts %}
+          <tr>
+            <th><h2>CREDITS<br>CONTACT HOURS </h2></th>
+            <td colspan="2">{{ post.credits|safe }} units lecture <br> {{ post.contact_hours|safe }} unit laboratory</td>
+          </tr>
+          {% endfor %}
+
+          {% for post in posts %}
+          <tr>
+            <th><h2>INSTRUCTOR</h2></th>
+            <td colspan="2"> {{ post.instructor|safe }} <br> {{ post.position|safe }}</td>
+          </tr>
+          {% endfor %}
+
+          {% for post in posts %}
+          <tr>
+            <th><h2>TEXTBOOK</h2></th>
+            <td colspan="2"> {{ post.textbook|safe }}</td>
+          </tr>
+          {% endfor %}
+
+          {% for post in posts %}
+          <tr>
+            <th><h2>Other Supplemental<br>Materials</h2></th>
+            <td colspan="2">{{ post.other_supplementary_material|safe }}</td>
+          </tr>
+          {% endfor %}
+
+          <tr>
+            <th colspan="3"><h2 class="name">SPECIFIC COURSE INFORMATION</h2></th>
+          </tr>
+          <tr>
+            <th colspan="3"><h2>a. Course Description</h2></th>
+          </tr>
+          {% for post in posts %}
+          <tr>
+            <th colspan="3"><p>{{ post.course_description|safe }}</p></th>
+          </tr>
+          {% endfor %}
+
+          {% for post in posts %}
+          <tr>
+            <th><h2>b. Prerequisites<br>Co-requisites</h2></th>
+            <td colspan="2"> {{ post.prerequisites|safe }} <br> {{ post.corequisites|safe }}</td>
+          </tr>
+          {% endfor %}
+
+          {% for post in posts %}
+          <tr>
+            <th><h2 >c. Course Classification (Required/elective/<br>selected elective)</h2></th>
+            <td colspan="2">{{ post.course_classification|safe }}</td>
+          </tr>
+          {% endfor %}
+          
+          <tr>
+            <th colspan="3"><h2 class="name">SPECIFIC GOALS FOR THE COURSE</h2></th>
+          </tr>
+
+          <tr>
+            <th colspan="3"><h2 class="name">a. Course Objective</h2></th>
+          </tr>
+
+          {% for post in posts %}
+          <tr>
+            <th colspan="3"><p>{{ post.course_objective|safe }}</p></th>
+          </tr>
+          {% endfor %}
+
+          <tr>
+            <th colspan="3"><h2 class="name">b. Course Outcomes</h2></th>
+          </tr>
+          
+          {% for post in posts %}
+          <tr>
+            <th colspan="3"><p>{{ post.course_outcomes|safe }}</p></th>
+          </tr>
+          {% endfor %}
+
+          <tr>
+            <th colspan="3"><h2 class="name">c.  Student Outcomes Addressed by the Course</h2></th>
+          </tr>
+
+          {% for post in posts %}
+          <tr>
+            <th colspan="3"><p>{{ post.student_outcome_addressed_by_the_course|safe }}</p></th>
+          </tr>
+          {% endfor %}
+
+          <tr>
+            <th colspan="3"><h2 class="name">COURSE TOPICS</h2></th>
+          </tr>
+
+          {% for post in posts %}
+          <tr>
+            <th colspan="3"><p>{{ post.course_topics|safe }}</p></th>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div id="footer_content">(c) - page <pdf:pagenumber>
+      of <pdf:pagecount>
+    </div>
+
+
+  </body>
+</html>

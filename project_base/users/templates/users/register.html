@@ -1,0 +1,28 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sign up page</title>
+</head>
+<body class="bg-white flex justify-center">
+    <div class="grid justify-items-center flex justify-center items-center h-screen">
+        <div class="px-10 py-5 rounded-lg shadow-lg bg-[#A7D8DC] max-w-sm z-auto w-96 h-auto">
+            <form method="POST">
+                {% csrf_token %}
+              <div class="form-group mb-6 grid justify-items-center">
+                <label class="form-label inline-block mt-5 mb-10 text-5xl text-[#487A9D]  font-bold">Sign Up</label>
+              </div>
+              {{ form|crispy }}
+              <div class="form-group mb-6 grid justify-items-center" >
+              <button type="submit" class=" px-6 py-2.5 bg-[#F5F1ED] text-[#487A9D] font-bold text-base leading-tight rounded shadow-md hover:bg-gray-300 hover:shadow-lg ">Sign Up
+              </button>
+              </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

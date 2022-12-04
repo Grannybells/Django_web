@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Welcome</title>
+</head>
+<body class="flex flex-col bg-[#A7D8DC]">
+    <nav class="flex justify-between text-white px-20 pt-5">
+        <div>
+            <img class="w-36 h-36" src="{% static 'syllabook/images/syllabus-logo.png' %}" alt="logo">
+        </div>
+        <div class="flex flex-row mr-10 items-center font-bold text-xl text-[#243859]">
+            <a href="{% url 'login' %}" class="mx-5">Login</a>
+            <a href="{% url 'register' %}" class="mx-5">Sign up</a>
+        </div>
+    </nav>
+    
+    <div class="font-bold text-8xl text-[#243859]">
+        <div class="pl-20 w-9/12">
+            <h>Want to generate your own syllabus?</h>
+        </div>
+    </div>
+
+    <div class="flex flex-row justify-between">
+        <div class="w-2/5">
+            <p class="bg-white pl-20 pr-10 py-5 mt-10 rounded-r-md text-red-500 font-semibold text-justify text-xl tracking-wide">Use this simple syllabus generator to quickly and easily create a high-quality course outline  for your educational institution. They're simple to implement, adapt, and interact with, guaranteeing that you and your students are constantly on the same page and making progress.</p>
+        </div>
+        <div class="mr-10 pr-20">
+            <img class="h-96" src="#" alt="">
+        </div>
+    </div>
+</body>
+</html>

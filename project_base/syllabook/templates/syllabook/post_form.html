@@ -1,0 +1,29 @@
+{% extends "syllabook/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Create {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="flex flex-col pl-72 pt-10">
+        <h class="font-bold text-5xl mb-10">Create</h>
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.media}}
+            {{ form|crispy }}
+              
+            <div class="flex flex-row justify-center p-10">
+              <button type="submit" class="px-6 py-2.5 w-20 h-10 bg-[#F5F1ED] text-[#A99985] font-bold text-base leading-tight rounded shadow-md hover:bg-gray-300 hover:shadow-lg ">Save</button>
+              <a href="{% url 'home' %}" class="py-2.5 pr-5 pl-4 ml-10 w-20 h-10 bg-[#F5F1ED] text-[#A99985] font-bold text-base leading-tight rounded shadow-md hover:bg-gray-300 hover:shadow-lg ">Cancel</a>
+            </div>
+          </form>
+    </div>
+{% else %}
+<h1 class="pl-72 pt-10"> Login to our website!</h1>
+
+{% endif %}
+
+{% endblock content %}
