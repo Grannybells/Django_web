@@ -10,26 +10,24 @@
         font-size: 16px;
       }
 
-      @page {
-        size: letter portrait;
-        margin-top: 1cm;
-        margin-left: 1.5cm;
-        margin-right: 1.5cm;
-        margin-bottom: 2cm;
-
-        @frame footer_frame {           /* Another static Frame */
-            -pdf-frame-content: footer_content;
-            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
-        }
+      div{
+        margin-bottom: 100px;
       }
-
-
 
       p {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: normal;
-
+        line-height: 1.2;
       }
+
+      .prof {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        text-align: center;
+        text-decoration: underline;
+      }
+
 
       h1 {
         font-size: 18px;
@@ -43,12 +41,6 @@
         font-weight: bold;
       }
 
-      h2.name {
-        font-size: 16px;
-        text-align: left;
-        font-weight: bold;
-      }
-
       h3 {
         font-size: 11px;
         text-align: right;
@@ -57,11 +49,23 @@
         font-style: italic;
       }
 
+      h4.name {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 0.6rem;
+        text-align: left;
+        font-weight: normal;
+      }
+
+      h4.position{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 10px;
+        text-align: center;
+        font-weight: normal;
+      }
       
       table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
-        
       }
 
       th, td {
@@ -78,31 +82,18 @@
         width:30%;
       }
 
+      th.content {
+        padding-bottom: 2px;
+      }
+
+      td.content {
+        padding-bottom: 1px;
+      }
+
       td {
         width: 70%;
       }
 
-      table.d {
-        table-layout: fixed;
-        width: 100%;
-      }
-
-      tr.p {
-        height: 2cm;
-
-      }
-
-      td.f{
-        text-align: center;
-        font-size: 10px;
-      }
-
-      h1.prof{
-        text-align: center;
-        font-size: 32px;
-        font-weight: normal;
-
-      }
     </style>
   </head>
   <body>
@@ -121,35 +112,35 @@
           {% for post in posts %}
           <tr>
             <th><h2>COURSE CODE<br>COURSE NAME</h2></th>
-            <td colspan="2">{{ post.course_code|safe }}<br>{{ post.course_name|safe }}</td>
+            <td colspan="2"><p>{{ post.course_code|safe }}<br>{{ post.course_name|safe }}</p></td>
           </tr>
           {% endfor %}
 
           {% for post in posts %}
           <tr>
             <th><h2>CREDITS<br>CONTACT HOURS </h2></th>
-            <td colspan="2">{{ post.credits|safe }} units lecture <br> {{ post.contact_hours|safe }} unit laboratory</td>
+            <td colspan="2"><p>{{ post.credits|safe }} units lecture <br> {{ post.contact_hours|safe }} unit laboratory</p></td>
           </tr>
           {% endfor %}
 
           {% for post in posts %}
           <tr>
             <th><h2>INSTRUCTOR</h2></th>
-            <td colspan="2"> {{ post.instructor|safe }} <br> {{ post.position|safe }}</td>
+            <td class="content" colspan="2"><p>{{ post.instructor|safe }} <br> {{ post.position|safe }}</p></td>
           </tr>
           {% endfor %}
 
           {% for post in posts %}
           <tr>
             <th><h2>TEXTBOOK</h2></th>
-            <td colspan="2"> {{ post.textbook|safe }}</td>
+            <td class="content" colspan="2"> <p>{{ post.textbook|safe }}</p></td>
           </tr>
           {% endfor %}
 
           {% for post in posts %}
           <tr>
             <th><h2>Other Supplemental<br>Materials</h2></th>
-            <td colspan="2">{{ post.other_supplementary_material|safe }}</td>
+            <td class="content" colspan="2"><p>{{ post.other_supplementary_material|safe }}</p></td>
           </tr>
           {% endfor %}
 
@@ -161,21 +152,21 @@
           </tr>
           {% for post in posts %}
           <tr>
-            <th colspan="3"><p>{{ post.course_description|safe }}</p></th>
+            <th class="content" colspan="3"><p>{{ post.course_description|safe }}</p></th>
           </tr>
           {% endfor %}
 
           {% for post in posts %}
           <tr>
             <th><h2>b. Prerequisites<br>Co-requisites</h2></th>
-            <td colspan="2"> {{ post.prerequisites|safe }} <br> {{ post.corequisites|safe }}</td>
+            <td colspan="2"> <p>{{ post.prerequisites|safe }} <br> {{ post.corequisites|safe }}</p></td>
           </tr>
           {% endfor %}
 
           {% for post in posts %}
           <tr>
             <th><h2 >c. Course Classification (Required/elective/<br>selected elective)</h2></th>
-            <td colspan="2">{{ post.course_classification|safe }}</td>
+            <td colspan="2"><p>{{ post.course_classification|safe }}</p></td>
           </tr>
           {% endfor %}
           
@@ -189,7 +180,7 @@
 
           {% for post in posts %}
           <tr>
-            <th colspan="3"><p>{{ post.course_objective|safe }}</p></th>
+            <th class="content" colspan="3"><p>{{ post.course_objective|safe }}</p></th>
           </tr>
           {% endfor %}
 
@@ -199,7 +190,7 @@
           
           {% for post in posts %}
           <tr>
-            <th colspan="3"><p>{{ post.course_outcomes|safe }}</p></th>
+            <th class="content" colspan="3"><p>{{ post.course_outcomes|safe }}</p></th>
           </tr>
           {% endfor %}
 
@@ -209,7 +200,7 @@
 
           {% for post in posts %}
           <tr>
-            <th colspan="3"><p>{{ post.student_outcome_addressed_by_the_course|safe }}</p></th>
+            <th class="content" colspan="3"><p>{{ post.student_outcome_addressed_by_the_course|safe }}</p></th>
           </tr>
           {% endfor %}
 
@@ -219,16 +210,57 @@
 
           {% for post in posts %}
           <tr>
-            <th colspan="3"><p>{{ post.course_topics|safe }}</p></th>
+            <th class="content" colspan="3"><p>{{ post.course_topics|safe }}</p></th>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
-    <div id="footer_content">(c) - page <pdf:pagenumber>
-      of <pdf:pagecount>
-    </div>
 
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            {% for post in posts %}
+            <th class="1h" colspan="3">
+              <h4 class="name">Prepared by:</h4>
+              <p1 class="prof">{{ post.prepared|safe }}</p1>
+              <h4 class="position">Faculty Member’s Printed Name and Signature</h4>
+            </th>
+            {% endfor %}
+  
+            {% for post in posts %}
+            <th class="2h" colspan="3">
+              <h4 class="name">Noted by:</h4>
+              <p1 class="prof"> {{ post.noted|safe }} </p1>
+              <h4 class="position">Department Chair</h4>
+            </th>
+            {% endfor %}
+  
+            {% for post in posts %}
+            <th class="3h" colspan="3">
+              <h4 class="name">Approved to take effect on 1st Sem SY 2022-2023</h4>
+              <p1 class="prof"> {{ post.marked|safe }} </p1>
+              <h4 class="position">Dean/VPAA</h4>
+            </th>
+            {% endfor %}
+          </tr>
+  
+          <tr>
+            <th colspan="3">
+              <p> Date: </p>
+            </th>
+            <th colspan="3">
+              <p> Date: </p>
+            </th>
+            <th colspan="3">
+              <p> Date: </p>
+            </th>
+          </tr>
+  
+        </tbody>
+      </table>
+    </div>
 
   </body>
 </html>
